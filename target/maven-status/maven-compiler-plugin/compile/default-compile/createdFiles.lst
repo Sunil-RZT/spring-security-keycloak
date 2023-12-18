@@ -1,0 +1,8 @@
+com/example/securingweb/SecuringWebApplication.class
+com/example/securingweb/config/WebSecurityConfig.class
+com/example/securingweb/config/WebSecurityConfig$1.class
+com/example/securingweb/utils/CustomJWTConverter.class
+com/example/securingweb/utils/CustomJWTConverter$1.class
+com/example/securingweb/bean/AllianceContext.class
+com/example/securingweb/controller/SinglePointController.class
+com/example/securingweb/bean/DocRegistry.class

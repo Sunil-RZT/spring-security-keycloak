@@ -1,0 +1,20 @@
+{
+  "realm": "singlepoint-ai",
+  "auth-server-url": "http://localhost:9000/",
+  "resource": "singlepoint-ai-client",
+  "credentials": {
+    "secret": "R8VV7wkARKNhrZK5AgkI9N1Iaj8Gh9DD"
+  },
+  "paths" : [
+    {
+      "path": "/public/*",
+      "enforcement-mode": "DISABLED"
+    },{
+      "path": "/swagger-ui/*",
+      "enforcement-mode": "DISABLED"
+    },{
+      "path": "/v3/api-docs/*",
+      "enforcement-mode": "DISABLED"
+    }
+  ]
+}
