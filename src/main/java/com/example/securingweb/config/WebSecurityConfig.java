@@ -8,6 +8,7 @@ import org.keycloak.representations.adapters.config.PolicyEnforcerConfig;
 import org.keycloak.util.JsonSerialization;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -31,7 +32,20 @@ public class WebSecurityConfig {
         // Disable Cross Site Reference Forgery
         http.csrf(AbstractHttpConfigurer::disable);
 
-        /*
+        // Disable Auth for Swagger URI's
+//        http.authorizeHttpRequests(
+//                authorize -> authorize
+//                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**")
+//                        .permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/docs")
+//                        .permitAll()
+//                        .anyRequest()
+//                        .authenticated())
+//                .addFilterAfter(createPolicyEnforcerFilter(), BearerTokenAuthenticationFilter.class)
+//                .addFilterAfter(new PreAuthFilter(), BearerTokenAuthenticationFilter.class);
+//        ;
+
+        /*d
         Key cloak Authentication
          */
         http.addFilterAfter(createPolicyEnforcerFilter(), BearerTokenAuthenticationFilter.class)

@@ -23,6 +23,8 @@ public class PreAuthFilter extends OncePerRequestFilter
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
+        // Auth Filter applied for
+        System.out.println("Auth Filter applied for " + request.getRequestURL().toString());
         // Access headers from the request
         String jwtToken = request.getHeader("Authorization");
         String[] chunks = jwtToken.replace("Bearer ", "").split("\\.");
@@ -57,6 +59,15 @@ public class PreAuthFilter extends OncePerRequestFilter
 
         // Continue with the filter chain
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request)
+    {
+        // Exclude certain URLs from being processed by this filter
+        String path = request.getRequestURI();
+        System.out.println("Skipped Auth Filter for : " + path);
+        return path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs");
     }
 
 }
